@@ -19,12 +19,13 @@ INSERT the records in the tables below into the table you created in step 2.
 Document what information is stored in your database. Be sure to say what information is kept in what table, and which keys link the records between tables.
 
 ## Customers Table
-CustomerID (int)	FirstName (varchar50)	LastName (varchar50)	Gender (varchar)	Address (varchar200)	Phone (int 10)	Email (varchar100)	City (varchar20)	Country (varchar50)
-1	John	Hibert	Male	284 chaucer st	084789657	john@gmail.com	Johannesburg	South Africa
-2	Thando	Sithole	Female	240 Sect 1	0794445584	thando@gmail.com	Cape Town	South Africa
-3	Leon	Glen	Male	81 Everton Rd,Gillits	0820832830	Leon@gmail.com	Durban	South Africa
-4	Charl	Muller	Mal	290A Dorset Ecke	+44856872553	Charl.muller@yahoo.com	Berlin	Germany
-5	Julia	Stein	Female	2 Wernerring	+448672445058	Js234@yahoo.com	Frankfurt	Germany
+|CustomerID (int)|	FirstName (varchar50)|	LastName (varchar50)|	Gender (varchar)|	Address (varchar200)|	Phone (int 10)|	Email (varchar100)|	City (varchar20)|	Country (varchar50)|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1| 	John| 	Hibert| 	Male| 	284 chaucer st| 	084789657| 	john@gmail.com| 	Johannesburg| 	South Africa| 
+| 2| 	Thando| 	Sithole| 	Female| 	240 Sect 1| 	0794445584| 	thando@gmail.com| 	Cape Town| 	South Africa| 
+| 3| 	Leon| 	Glen	| Male| 	81 Everton Rd,Gillits| 	0820832830| 	Leon@gmail.com| 	Durban| 	South Africa| 
+| 4| 	Charl| 	Muller| 	Male| 	290A Dorset Ecke| 	+44856872553	| Charl.muller@yahoo.com| 	Berlin	| Germany| 
+| 5| 	Julia| 	Stein| 	Female| 	2 Wernerring	| +448672445058| 	Js234@yahoo.com| 	Frankfurt| 	Germany| 
 ## Employees Table
 EmployeeID (int)	FirstName (varchar50)	LastName (varchar50)	Email (varchar100)	JobTitle (varchar20)
 1	Kani	Matthew	mat@gmail.com	Manager
