@@ -1,5 +1,4 @@
 # Part 1: Creating a database
-Save all of your instructions in a script file - you will submit this file on Gnomio and github.
 
 Create a database called “Umuzi”.
 
