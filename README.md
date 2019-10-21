@@ -5,11 +5,12 @@ Create a database called “Umuzi”.
 
 Create the following tables in the Umuzi database:
 
-Customers
-Employees
-Orders
-Payments
-Products
+- Customers
+- Employees
+- Orders
+- Payments
+- Products
+
 Create a primary key for each table with auto-increment (make sure you correctly specify the data types, e.g. the ID field should be int).
 
 Create foreign keys so that every ID in the order table references an existing ID in the tables referenced (e.g., ProductID, EmployeeID, etc).
