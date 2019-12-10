@@ -1,1 +1,0 @@
-To create and run the tables and queries I used MySQL Workbench for linux. 
