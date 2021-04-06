@@ -1,7 +1,3 @@
-DROP DATABASE Umuzi;
-
-
-
 CREATE DATABASE Umuzi;
 
 USE Umuzi;
@@ -20,6 +16,7 @@ CREATE TABLE Customers (
 );
 
 INSERT INTO Customers VALUES (1,'Lerato','Mabitso','Male','284 chaucer st',84789657,'john@gmail.com','Johannesburg','South Africa'),
+(2, 'Thando', 'Sithole', 'Female', '240 Sect 1', 0794445584, 'thando@gmail.com', 'Cape Town', 'South Africa'),
 (3,'Leon','Glen','Male','81 Everton Rd,Gillits',820832830,'Leon@gmail.com','Durban','South Africa'),
 (4,'Charl','Muller','Male','290A Dorset Ecke',44856872553,'Charl.muller@yahoo.com','Berlin','Germany'),
 (5,'Julia','Stein','Female','2 Wernerring',448672445058,'Js234@yahoo.com','Frankfurt','Germany');
@@ -40,11 +37,11 @@ INSERT INTO Employees VALUES (1,'Kani','Matthew','mat@gmail.com','Manager'),
 
 
 CREATE TABLE Payments (
-  CustomerID int(11) NOT NULL AUTO_INCREMENT,
-  PaymentID int(11) DEFAULT NULL,
+  CustomerID int(11) DEFAULT NULL,
+  PaymentID int(11) NOT NULL AUTO_INCREMENT,
   PaymentDate datetime DEFAULT NULL,
   Amount decimal(10,2) DEFAULT NULL,
-  PRIMARY KEY (CustomerID)
+  PRIMARY KEY (PaymentID) 
 );
 
 INSERT INTO Payments VALUES (1,1,'2018-09-01 00:00:00',150.75),
@@ -80,9 +77,9 @@ CREATE TABLE Orders (
   KEY ProductID (ProductID),
   KEY FulfilledByEmployeeID (FulfilledByEmployeeID),
   CONSTRAINT Orders_ibfk_1 FOREIGN KEY (ProductID) REFERENCES Products (ProductID),
-  CONSTRAINT Orders_ibfk_2 FOREIGN KEY (ProductID) REFERENCES Products (ProductID),
-  CONSTRAINT Orders_ibfk_3 FOREIGN KEY (ProductID) REFERENCES Products (ProductID),
-  CONSTRAINT Orders_ibfk_4 FOREIGN KEY (FulfilledByEmployeeID) REFERENCES Employees (EmployeeID)
+  CONSTRAINT Orders_ibfk_2 FOREIGN KEY (PaymentID) REFERENCES Payments (PaymentID),
+  CONSTRAINT Orders_ibfk_3 FOREIGN KEY (FulfilledByEmployeeID) REFERENCES Employees (EmployeeID),
+  CONSTRAINT Orders_ibfk_4 FOREIGN KEY (CustomerID) REFERENCES Customers (CustomerID)
 );
 
 INSERT INTO Orders VALUES (1,1,1,2,'2018-09-05 00:00:00',NULL,'Not shipped'),
@@ -91,9 +88,9 @@ INSERT INTO Orders VALUES (1,1,1,2,'2018-09-05 00:00:00',NULL,'Not shipped'),
 
 SELECT * FROM Customers;
 
-SELECT FirstName FROM Customers;
+SELECT FirstName, LastName FROM Customers;
 
-SELECT * FROM Customers WHERE CustomerID IN (1);
+SELECT FirstName, LastName FROM Customers WHERE CustomerID = 1;
 
 UPDATE Customers
 SET FirstName = 'Lerato', LastName= 'Mabitso'
@@ -107,9 +104,7 @@ SELECT MAX(Amount) FROM Payments;
 
 SELECT * FROM Customers ORDER BY Country;
 
-SELECT *
-FROM Products
-WHERE BuyPrice BETWEEN 100 AND 900;
+SELECT * FROM Products WHERE BuyPrice BETWEEN 100 AND 900;
 
 SELECT * FROM Customers WHERE  Country ='Germany' AND City ='Berlin';
 
