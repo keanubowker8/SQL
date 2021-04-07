@@ -3,16 +3,15 @@ CREATE DATABASE Umuzi;
 USE Umuzi;
 
 CREATE TABLE Customers (
-  CustomerID int(11) NOT NULL AUTO_INCREMENT,
+  CustomerID SERIAL PRIMARY KEY,
   FirstName varchar(50) DEFAULT NULL,
   LastName varchar(50) DEFAULT NULL,
   Gender varchar(45) DEFAULT NULL,
   Address varchar(200) DEFAULT NULL,
-  Phone bigint(20) DEFAULT NULL,
+  Phone bigint DEFAULT NULL,
   Email varchar(100) DEFAULT NULL,
   City varchar(20) DEFAULT NULL,
-  Country varchar(50) DEFAULT NULL,
-  PRIMARY KEY (CustomerID)
+  Country varchar(50) DEFAULT NULL
 );
 
 INSERT INTO Customers VALUES (1,'Lerato','Mabitso','Male','284 chaucer st',84789657,'john@gmail.com','Johannesburg','South Africa'),
@@ -23,12 +22,11 @@ INSERT INTO Customers VALUES (1,'Lerato','Mabitso','Male','284 chaucer st',84789
 
 
 CREATE TABLE Employees (
-  EmployeeID int(11) NOT NULL AUTO_INCREMENT,
+  EmployeeID SERIAL PRIMARY KEY,
   FirstName varchar(50) DEFAULT NULL,
   LastName varchar(50) DEFAULT NULL,
   Email varchar(100) DEFAULT NULL,
-  JobTitle varchar(20) DEFAULT NULL,
-  PRIMARY KEY (EmployeeID)
+  JobTitle varchar(20) DEFAULT NULL
 );
 
 INSERT INTO Employees VALUES (1,'Kani','Matthew','mat@gmail.com','Manager'),
@@ -37,11 +35,10 @@ INSERT INTO Employees VALUES (1,'Kani','Matthew','mat@gmail.com','Manager'),
 
 
 CREATE TABLE Payments (
-  CustomerID int(11) DEFAULT NULL,
-  PaymentID int(11) NOT NULL AUTO_INCREMENT,
-  PaymentDate datetime DEFAULT NULL,
-  Amount decimal(10,2) DEFAULT NULL,
-  PRIMARY KEY (PaymentID) 
+  CustomerID int DEFAULT NULL,
+  PaymentID SERIAL PRIMARY KEY,
+  PaymentDate timestamp DEFAULT NULL,
+  Amount numeric(10,2) DEFAULT NULL
 );
 
 INSERT INTO Payments VALUES (1,1,'2018-09-01 00:00:00',150.75),
@@ -49,13 +46,11 @@ INSERT INTO Payments VALUES (1,1,'2018-09-01 00:00:00',150.75),
 (5,2,'2018-09-03 00:00:00',150.70);
 
 
-
 CREATE TABLE Products (
-  ProductID int(11) NOT NULL AUTO_INCREMENT,
+  ProductID SERIAL PRIMARY KEY,
   ProductName varchar(100) DEFAULT NULL,
   Description varchar(300) DEFAULT NULL,
-  BuyPrice decimal(10,2) DEFAULT NULL,
-  PRIMARY KEY (ProductID)
+  BuyPrice numeric(10,2) DEFAULT NULL
 );
 
 
@@ -65,21 +60,15 @@ INSERT INTO Products VALUES (1,'Harley Davidson Chopper','This replica features 
 (3,'Sports car','Turnable front wheels, steering function',700.60);
 
 
-CREATE TABLE Orders (
-  OrderID int(11) NOT NULL AUTO_INCREMENT,
-  ProductID int(11) DEFAULT NULL,
-  PaymentID int(11) DEFAULT NULL,
-  FulfilledByEmployeeID int(11) DEFAULT NULL,
-  DateRequired datetime DEFAULT NULL,
-  DateShipped datetime DEFAULT NULL,
-  Status varchar(20) DEFAULT NULL,
-  PRIMARY KEY (OrderID),
-  KEY ProductID (ProductID),
-  KEY FulfilledByEmployeeID (FulfilledByEmployeeID),
-  CONSTRAINT Orders_ibfk_1 FOREIGN KEY (ProductID) REFERENCES Products (ProductID),
-  CONSTRAINT Orders_ibfk_2 FOREIGN KEY (PaymentID) REFERENCES Payments (PaymentID),
-  CONSTRAINT Orders_ibfk_3 FOREIGN KEY (FulfilledByEmployeeID) REFERENCES Employees (EmployeeID),
-  CONSTRAINT Orders_ibfk_4 FOREIGN KEY (CustomerID) REFERENCES Customers (CustomerID)
+CREATE TABLE Orders
+(
+	OrderID SERIAL PRIMARY KEY,
+	ProductID int REFERENCES Products(ProductID),
+	PaymentID int REFERENCES Payments(PaymentID),
+	FulfilledByEmployeeID int REFERENCES Employees(EmployeeID),
+	DateRequired timestamp,
+	DateShipped timestamp,
+	Status varchar(20)
 );
 
 INSERT INTO Orders VALUES (1,1,1,2,'2018-09-05 00:00:00',NULL,'Not shipped'),
@@ -136,4 +125,3 @@ ON Payments.CustomerID = Customers.CustomerID;
 
 
 SELECT * FROM Products WHERE Description LIKE '%Turnable front wheels%';
-
