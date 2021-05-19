@@ -3,8 +3,8 @@ services:
   postgres:
     image: postgres:9.6
     environment:
-      - POSTGRES_USER=keanu
-      - POSTGRES_PASSWORD=umuzi01
+      - POSTGRES_USER=keanuxbowker
+      - POSTGRES_PASSWORD=08KeanuBow
       - POSTGRES_DB=Umuzi
     volumes:
       - ./gitignore/postgresql:/var/lib/postgresql/data
