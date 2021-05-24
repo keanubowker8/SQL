@@ -10,13 +10,13 @@ WHERE CustomerID = 1;
 
 DELETE FROM Customers WHERE CustomerID IN(2);
 
-SELECT COUNT(DISTINCT Status) FROM Orders;
+SELECT COUNT(DISTINCT(Status)) AS Unique_Status_Count FROM Orders;
 
 SELECT MAX(Amount) FROM Payments;
 
 SELECT * FROM Customers ORDER BY Country;
 
-SELECT * FROM Products WHERE BuyPrice BETWEEN 100 AND 900;
+SELECT * FROM Products WHERE BuyPrice BETWEEN 100 AND 600;
 
 SELECT * FROM Customers WHERE  Country ='Germany' AND City ='Berlin';
 
@@ -36,10 +36,8 @@ FROM
 SELECT COUNT(Status) FROM Orders WHERE Status IN ('Shipped');
 
 
-SELECT 
-    AVG(BuyPrice) AS Price_Rands,AVG(BuyPrice)*12 AS Price_Dollars 
-FROM 
-    Products;
+SELECT CAST(AVG(BuyPrice) AS DECIMAL(10,2)) AS Average_Rands, CAST(AVG(BuyPrice / 12.0) AS DECIMAL(10,2)) AS Average_Dollars FROM Products;
+
     
 SELECT *
 FROM Payments
