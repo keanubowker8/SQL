@@ -10,7 +10,7 @@ WHERE CustomerID = 1;
 
 DELETE FROM Customers WHERE CustomerID IN(2);
 
-SELECT COUNT(DISTINCT(Status)) AS Unique_Status_Count FROM Orders;
+SELECT COUNT(Status), Status FROM Orders GROUP BY Status;
 
 SELECT MAX(Amount) FROM Payments;
 
