@@ -33,7 +33,7 @@ FROM
     Payments;
     
 
-SELECT COUNT(Status) FROM Orders WHERE Status IN ('Shipped');
+SELECT Orders.Status, COUNT(Status) FROM Orders WHERE Status IN ('Shipped') GROUP BY Orders.Status;
 
 
 SELECT CAST(AVG(BuyPrice) AS DECIMAL(10,2)) AS Average_Rands, CAST(AVG(BuyPrice / 12.0) AS DECIMAL(10,2)) AS Average_Dollars FROM Products;
