@@ -12,7 +12,7 @@ CREATE DATABASE shop
     CONNECTION LIMIT = -1;
 	
 CREATE TABLE Customers (
-  CustomerID SERIAL PRIMARY KEY,
+  ID SERIAL PRIMARY KEY,
   FirstName varchar(50) DEFAULT NULL,
   LastName varchar(50) DEFAULT NULL,
   Gender varchar(45) DEFAULT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE Customers (
   Country varchar(50) DEFAULT NULL
 );
 
-INSERT INTO Customers VALUES (1,'Lerato','Mabitso','Male','284 chaucer st',84789657,'john@gmail.com','Johannesburg','South Africa'),
+INSERT INTO Customers VALUES (1,'John','Hibert','Male','284 chaucer st',084789657,'john@gmail.com','Johannesburg','South Africa'),
 (2, 'Thando', 'Sithole', 'Female', '240 Sect 1', 0794445584, 'thando@gmail.com', 'Cape Town', 'South Africa'),
 (3,'Leon','Glen','Male','81 Everton Rd,Gillits',820832830,'Leon@gmail.com','Durban','South Africa'),
 (4,'Charl','Muller','Male','290A Dorset Ecke',44856872553,'Charl.muller@yahoo.com','Berlin','Germany'),
@@ -31,7 +31,7 @@ INSERT INTO Customers VALUES (1,'Lerato','Mabitso','Male','284 chaucer st',84789
 
 
 CREATE TABLE Employees (
-  EmployeeID SERIAL PRIMARY KEY,
+  ID SERIAL PRIMARY KEY,
   FirstName varchar(50) DEFAULT NULL,
   LastName varchar(50) DEFAULT NULL,
   Email varchar(100) DEFAULT NULL,
@@ -45,7 +45,7 @@ INSERT INTO Employees VALUES (1,'Kani','Matthew','mat@gmail.com','Manager'),
 
 CREATE TABLE Payments (
   CustomerID int DEFAULT NULL,
-  PaymentID SERIAL PRIMARY KEY,
+  ID SERIAL PRIMARY KEY,
   PaymentDate timestamp DEFAULT NULL,
   Amount numeric(10,2) DEFAULT NULL
 );
@@ -56,7 +56,7 @@ INSERT INTO Payments VALUES (1,1,'2018-09-01 00:00:00',150.75),
 
 
 CREATE TABLE Products (
-  ProductID SERIAL PRIMARY KEY,
+  ID SERIAL PRIMARY KEY,
   ProductName varchar(100) DEFAULT NULL,
   Description varchar(300) DEFAULT NULL,
   BuyPrice numeric(10,2) DEFAULT NULL
@@ -71,10 +71,10 @@ INSERT INTO Products VALUES (1,'Harley Davidson Chopper','This replica features 
 
 CREATE TABLE Orders
 (
-	OrderID SERIAL PRIMARY KEY,
-	ProductID int REFERENCES Products(ProductID),
-	PaymentID int REFERENCES Payments(PaymentID),
-	FulfilledByEmployeeID int REFERENCES Employees(EmployeeID),
+	ID SERIAL PRIMARY KEY,
+	ProductID int REFERENCES Products(ID),
+	PaymentID int REFERENCES Payments(ID),
+	FulfilledByEmployeeID int REFERENCES Employees(ID),
 	DateRequired timestamp,
 	DateShipped timestamp,
 	Status varchar(20)
