@@ -2,13 +2,13 @@ SELECT * FROM Customers;
 
 SELECT FirstName, LastName FROM Customers;
 
-SELECT FirstName, LastName FROM Customers WHERE CustomerID = 1;
+SELECT FirstName, LastName FROM Customers WHERE ID = 1;
 
 UPDATE Customers
 SET FirstName = 'Lerato', LastName= 'Mabitso'
-WHERE CustomerID = 1;
+WHERE ID = 1;
 
-DELETE FROM Customers WHERE CustomerID IN(2);
+DELETE FROM Customers WHERE ID IN(2);
 
 SELECT COUNT(Status), Status FROM Orders GROUP BY Status;
 
@@ -42,7 +42,7 @@ SELECT CAST(AVG(BuyPrice) AS DECIMAL(10,2)) AS Average_Rands, CAST(AVG(BuyPrice 
 SELECT *
 FROM Payments
 INNER JOIN Customers
-ON Payments.CustomerID = Customers.CustomerID;
+ON Payments.ID = Customers.ID;
 
 
 SELECT * FROM Products WHERE Description LIKE '%Turnable front wheels%';
