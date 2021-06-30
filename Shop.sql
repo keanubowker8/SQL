@@ -1,6 +1,6 @@
 -- Database: shop
 
---DROP DATABASE shop;
+DROP DATABASE IF EXISTS shop;
 
 CREATE DATABASE shop
     WITH 
@@ -10,6 +10,8 @@ CREATE DATABASE shop
     LC_CTYPE = 'English_South Africa.1252'
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
+
+DROP TABLE IF EXISTS Customers;
 	
 CREATE TABLE Customers (
   ID SERIAL PRIMARY KEY,
@@ -29,6 +31,7 @@ INSERT INTO Customers VALUES (1,'John','Hibert','Male','284 chaucer st',08478965
 (4,'Charl','Muller','Male','290A Dorset Ecke',44856872553,'Charl.muller@yahoo.com','Berlin','Germany'),
 (5,'Julia','Stein','Female','2 Wernerring',448672445058,'Js234@yahoo.com','Frankfurt','Germany');
 
+DROP TABLE IF EXISTS Employees; 
 
 CREATE TABLE Employees (
   ID SERIAL PRIMARY KEY,
@@ -42,6 +45,7 @@ INSERT INTO Employees VALUES (1,'Kani','Matthew','mat@gmail.com','Manager'),
 (2,'Lesly','Cronje','LesC@gmail.com','Clerk'),
 (3,'Gideon','Maduku','m@gmail.com','Accountant');
 
+DROP TABLE IF EXISTS Payments;
 
 CREATE TABLE Payments (
   CustomerID int DEFAULT NULL,
@@ -54,6 +58,7 @@ INSERT INTO Payments VALUES (1,1,'2018-09-01 00:00:00',150.75),
 (4,3,'2018-09-03 00:00:00',700.60),
 (5,2,'2018-09-03 00:00:00',150.70);
 
+DROP TABLE IF EXISTS Products;
 
 CREATE TABLE Products (
   ID SERIAL PRIMARY KEY,
@@ -68,6 +73,7 @@ INSERT INTO Products VALUES (1,'Harley Davidson Chopper','This replica features 
 (2,'Classic Car','Turnable front wheels, steering function',550.75),
 (3,'Sports car','Turnable front wheels, steering function',700.60);
 
+DROP TABLE IF EXISTS Orders;
 
 CREATE TABLE Orders
 (
