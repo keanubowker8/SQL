@@ -1,1 +1,1 @@
-Project instructions found at: http://syllabus.africacode.net/sql/shop-project/
+Create and populate database in postgreSQL
